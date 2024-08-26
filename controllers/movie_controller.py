@@ -1,3 +1,4 @@
+
 from models.movie import Movie
 from models.category import Category
 
@@ -8,7 +9,8 @@ class MovieController:
 
     def create_movie(self, name, duration, description, category_names):
         categories = [self.get_or_create_category(name) for name in category_names]
-        movie = Movie(name=name, duration=duration, description=description, categories=categories)
+        movie = Movie(name=name, duration=duration, description=description)
+        movie.categories = categories
         self.movies.append(movie)
 
     def update_movie(self, movie, name, duration, description, category_names):
